@@ -1,0 +1,39 @@
+<div class="flex flex-col w-full items-center gap-4 p-4">
+  <h3 class="font-bold">
+    Login
+  </h3>
+  <form
+    class="flex flex-col gap-4 w-[500px]"
+    [formGroup]="loginForm"
+  >
+    <div class="flex flex-col gap-2">
+      <p>Username</p>
+      <input
+        formControlName="username"
+        type="text"
+        placeholder="input your username..."
+        class="p-2"
+      >
+    </div>
+    <div class="flex flex-col gap-2">
+      <p>Password</p>
+      <input
+        formControlName="password"
+        type="password"
+        placeholder="input your password"
+        class="p-2"
+      >
+    </div>
+    <button
+      class="block w-full bg-black text-white p-2 rounded-sm"
+      (click)="onClickLogin()"
+      [disabled]="loginForm.invalid"
+      [ngClass]="{'bg-[#999]': loginForm.invalid, 'bg-black': loginForm.valid}"
+    >
+      Login
+    </button>
+  </form>
+  <p>
+    Didn't have account yet? <a href="/register">Register here.</a>
+  </p>
+</div>
