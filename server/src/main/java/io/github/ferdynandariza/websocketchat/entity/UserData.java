@@ -51,7 +51,6 @@ public class UserData {
         return "UserData{" +
                 "id='" + id + '\'' +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 '}';
     }
 }

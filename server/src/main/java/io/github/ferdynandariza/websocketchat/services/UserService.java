@@ -37,10 +37,16 @@ public class UserService {
         authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(request.username(), request.password()));
 
         if (authentication.isAuthenticated()) {
-            UserResponse userResponse = new UserResponse(null, request.username(), jwtService.generateToken(request.username()));
-            return userResponse;
+            return new UserResponse(null, request.username(), jwtService.generateToken(request.username()));
         } else {
             throw new UsernameNotFoundException("Bad credentials");
         }
+    }
+
+    public UserData getUserByUsername(String username) {
+        UserData userData = userRepository.findByUsername(username).orElseThrow(
+                () -> new UsernameNotFoundException("Username " + username + " not found")
+        );
+        return userData;
     }
 }

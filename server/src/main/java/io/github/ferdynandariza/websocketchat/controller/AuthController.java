@@ -1,10 +1,12 @@
 package io.github.ferdynandariza.websocketchat.controller;
 
+import io.github.ferdynandariza.websocketchat.entity.UserData;
 import io.github.ferdynandariza.websocketchat.model.UserRequest;
 import io.github.ferdynandariza.websocketchat.model.UserResponse;
 import io.github.ferdynandariza.websocketchat.services.UserService;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping(path = "/api")
 public class AuthController {
@@ -26,7 +28,7 @@ public class AuthController {
     }
 
     @GetMapping("/ping")
-    public String ping() {
+    public String ping(UserData userData) {
         return "pong";
     }
 }
